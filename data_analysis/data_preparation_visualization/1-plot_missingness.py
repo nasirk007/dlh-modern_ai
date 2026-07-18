@@ -16,7 +16,7 @@ def plot_missingness(df):
     missing_row, missing_col = np.where(df.isna())
     # first step isto plot missing value on x and y
     plt.scatter(missing_row, missing_col, marker="|")
-    plt.yticks(range(len(df.columns)), df.colummns)
+    plt.yticks(range(len(df.columns)), df.columns)
     plt.title("Missingness Plot")
     plt.tight_layout()
     plt.show()
