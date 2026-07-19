@@ -15,6 +15,7 @@ def clean_total_charges(df, method='drop'):
     # this change is done at DF level for particular column
     # means all those row from dataframe will be remove based on
     # if cell are empty in one particular columns like totalcharges
+    df = df.copy()
     if method == "drop":
         df = df.dropna(subset=['TotalCharges'])
     elif method == "median":
