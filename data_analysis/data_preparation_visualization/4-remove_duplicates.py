@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """this module handle duplicates rows in DF"""
-import pandas as pd
 
 
 def remove_duplicates(df):
