@@ -2,7 +2,7 @@
 """this module handle missing values in DF"""
 
 
-def def clean_total_charges(df, method='drop'):
+def clean_total_charges(df, method='drop'):
     """Task to do modification 4 missing values in particular column of DF."""
     # to see output of below, we need to have object
     # like what is df, like we need to read csv
