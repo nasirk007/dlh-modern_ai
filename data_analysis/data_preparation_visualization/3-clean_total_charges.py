@@ -23,5 +23,5 @@ def clean_total_charges(df, method='drop'):
             "TotalCharges"].median())
     elif method == "impute":
         df["TotalCharges"] = df["TotalCharges"].fillna(df[
-            "MonthlyCharges"] * df[c"tenure"])
+            "MonthlyCharges"] * df["tenure"])
     return df
