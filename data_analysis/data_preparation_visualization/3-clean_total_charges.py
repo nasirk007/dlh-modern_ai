@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""visualise convert column datatype dataframe"""
-import pandas as pd
+"""this module handle missing values in DF"""
 
 
 def def clean_total_charges(df, method='drop'):
