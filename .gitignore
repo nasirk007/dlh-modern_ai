@@ -4,4 +4,5 @@ __pycache__/
 .ipynb_checkpoints/
 .vscode/
 Telco-Customer-Churn.csv
+precleaned-Telco-Customer-Churn.csv
 *.ipynb
