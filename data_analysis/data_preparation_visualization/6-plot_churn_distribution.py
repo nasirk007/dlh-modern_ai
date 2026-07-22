@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 def plot_churn_distribution(df):
     """the function will plot customer churn data"""
     plt.figure(figsize=(12, 8))
-    count = df["Churn"].value_counts()
+    count = df["Churn"].value_counts().reindex(["No", "Yes"])
     plt.bar(count.index, count.values, color=["skyblue", "salmon"])
     plt.xlabel("Churn")
     plt.ylabel("Count")
