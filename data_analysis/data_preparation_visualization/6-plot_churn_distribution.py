@@ -1,14 +1,32 @@
 #!/usr/bin/env python3
-"""this module is to visulize churn class distribution"""
+"""
+This module visualizes churn class distribution in a DataFrame
+"""
 import matplotlib.pyplot as plt
 
 
 def plot_churn_distribution(df):
-    """the function will plot customer churn data"""
+    """
+    Plots the distribution of the Churn column.
+
+    Args:
+        df: The pandas DataFramecontaining a Churn column.
+
+    Returns:
+        None
+    """
     plt.figure(figsize=(12, 8))
-    count = df["Churn"].value_counts().reindex(["Yes", "No"])
-    plt.bar(count.index, count.values, color=["skyblue", "salmon"])
+
+    counts = df["Churn"].value_counts().reindex(["No", "Yes"])
+
+    plt.bar(
+        counts.index,
+        counts.values,
+        color=["skyblue", "salmon"]
+        )
+
+    plt.title("Churn Distribution")
     plt.ylabel("Count")
-    plt.title("Churn_Distribution")
     plt.show()
+
     return None
