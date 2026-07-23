@@ -57,6 +57,8 @@ def plot_categorical_distributions(df, columns_to_plot=None):
         # in each column are 7032m breakdown btw these three categories 
         counts = df[column].value_counts()
         # this will draw bar chart for each column
+        # axes[row][col] means go to each row of grid and then col
+        # pick one particular subplot to prepara its bar chat
         axes[row][col].bar(counts.index, counts.values)
         # This gives the subplot the column name as its title
         axes[row][col].set_title(column)
