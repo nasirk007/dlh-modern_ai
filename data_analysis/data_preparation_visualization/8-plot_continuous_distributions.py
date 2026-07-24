@@ -81,6 +81,14 @@ def plot_continuous_distributions(df, columns_to_plot=None):
         axes[i, 1].set_title(f"{column} Boxplot")
 
     plt.tight_layout()
+    # what does hist and boxplot is telling after writing above
+    # tenure: there are more short-term customers than medium-term ones, with a tail of long-term customers.
+    # monthlycharges: The histogram shows many customers paying in the lower range, 
+    # KDE curve suggest one main cluster of lower monthly bills, 
+    # and boxplot tell middle 50% customers pay somewhere in middlerange, lower and higher monthly charge customers also exist
+    # totalcharges: most customers have low total charges, and a smaller number have very high totals.
+    # because total charges grow with tenue, so new customer cluster at low total
+    # boxplot reinforce skewness, median is much close to lower end and upper stick/whister extend for higher
     plt.savefig("Task_8.png")
     plt.show()
 
