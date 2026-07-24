@@ -75,6 +75,8 @@ def plot_continuous_distributions(df, columns_to_plot=None):
 
         # this represent the right side plot in the grid
         # box plot normally use percentile to represent the data in each col under loop
+        # very=false means draw the box plot horizontally rather vertically
+        # its part of syntax understanding
         axes[i, 1].boxplot(data, vert=False)
         axes[i, 1].set_title(f"{column} Boxplot")
 
