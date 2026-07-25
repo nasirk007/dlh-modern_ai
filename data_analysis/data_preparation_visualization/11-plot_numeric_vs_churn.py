@@ -7,11 +7,7 @@ import matplotlib.pyplot as plt
 
 def plot_numeric_vs_churn(df, col):
     """
-    this task isto plot churn rate per numerical features
-    Compare the distributions of a numeric column for customers
-    who churned vs those who did not. The plot should be
-    two overlapping histograms (Churn=Yes and Churn=No)
-    so you can visually compare where churners concentrate.
+    this task isto plot churn rate per numerical features.
     """
     plt.figure(figsize=(12, 8))
     Yes_data = df[df["Churn"] == "Yes"][col]
