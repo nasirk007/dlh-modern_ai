@@ -1,20 +1,25 @@
 #!/usr/bin/env python3
 """
-this module visualizes churn rate per continous numerical features.
+This module compares continuous numeric feature distributions by churn.
 """
 import matplotlib.pyplot as plt
 
 
 def plot_numeric_vs_churn(df, col):
     """
-    this task isto plot churn rate per numerical features.
+        Plots a numeric column distribution
+        grouped by Churn.
     """
     plt.figure(figsize=(12, 8))
-    Yes_data = df[df["Churn"] == "Yes"][col]
-    No_data = df[df["Churn"] == "No"][col]
-    plt.hist([Yes_data, No_data], bins=30, label=["Yes", "No"])
-    plt.legend(title="Churn")
-    plt.xlabel(col)
+    churn_no = df[df["Churn"] == "No"][col]
+    churn_yes = df[df["Churn"] == "Yes"][col]
+    plt.hist(
+        [churn_no, churn_yes],
+        bins=30,
+        label=["No", "Yes"]
+        )
     plt.title(f"{col} Distribution by Churn")
+    plt.xlabel(col)
+    plt.legend(title="Churn")
     plt.show()
     return None
