@@ -10,7 +10,7 @@ def create_features(df):
     """
     df = df.drop(columns=["PhoneService"])
     df["NumService"] = 0
-    service_cols = ["MultipleLines", "OnlineSecurity", "OnlineBackup",
+    service_cols = ["MultipleLines", "InternetService", "OnlineSecurity", "OnlineBackup",
                     "DeviceProtection", "TechSupport", "StreamingTV",
                     "StreamingMovies"]
     for col in service_cols:
@@ -23,7 +23,7 @@ def create_features(df):
     df["TenureGroup"] = pd.cut(df["tenure"],
                                bins=[0, 12, 24, 48, 60, float("inf")],
                                labels=[
-                                   '0-12', '13-24', '25--48', '49-60', '60+'
+                                   '0-12', '13-24', '25-48', '49-60', '60+'
                                    ],
                                right=True)
     df = df.drop(columns=service_cols + ["tenure"])
