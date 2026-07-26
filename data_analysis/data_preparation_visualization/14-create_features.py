@@ -8,7 +8,6 @@ import pandas as pd
 def create_features(df):
     """Create new features based on existing ones.
     """
-    df = df.drop(columns=["PhoneService"])
     df["NumServices"] = 0
     service_cols = ["MultipleLines", "InternetService", "OnlineSecurity",
                     "OnlineBackup", "DeviceProtection", "TechSupport",
