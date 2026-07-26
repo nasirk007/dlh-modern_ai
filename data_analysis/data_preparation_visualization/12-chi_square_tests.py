@@ -13,6 +13,10 @@ def chi_square_tests(df):
         if feature == "Churn":
             continue
         table = pd.crosstab(df[feature], df["Churn"])
-        chi2, p_value, dof, expected = stats.chi2_contingency(table)
-        dictionary[feature] = float(p_value)
+        test_result = stats.chi2_contingency(table)
+        chi2 = test_result[0]
+        p_value = test_result[1]
+        dof = test_result[2]
+        expected = test_result[3]
+        dictionary[feature] = p_value
     return dictionary
