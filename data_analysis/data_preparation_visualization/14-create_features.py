@@ -19,7 +19,7 @@ def create_features(df):
                                              "Fiber optic": 1, "No": 0})
         else:
             df["NumService"] += df[col].apply(lambda x: 1 if x == "Yes" else 0)
-    df["TenureGroup"] = 0
+
     df["TenureGroup"] = pd.cut(df["tenure"],
                                bins=[0, 12, 24, 48, 60, float("inf")],
                                labels=[
