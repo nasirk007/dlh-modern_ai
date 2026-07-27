@@ -27,7 +27,7 @@ def create_features(df):
     df["TenureGroup"] = pd.cut(df["tenure"],
                                bins=[0, 12, 24, 48, 60, float("inf")],
                                labels=[
-                                   '0-12', '13-24', '25--48', '49-60', '60+'],
+                                   '0-12', '13-24', '25-48', '49-60', '60+'],
                                right=True)
     # labling was giving an idea to create bin for tenure like
     # 0, 12, 24 .........as it was not explicitly given
