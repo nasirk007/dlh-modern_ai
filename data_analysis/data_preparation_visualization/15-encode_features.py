@@ -18,11 +18,12 @@ def encode_features(df):
     target_le = preprocessing.LabelEncoder()
     df_enc["Churn"] = target_le.fit_transform(df_enc["Churn"])
 
-    binary_oe = preprocessing.OrdinalEncoder()
+    binary_oe = preprocessing.OrdinalEncoder(categories=[["No", "Yes"]])
     binary_columns = [
         "Partner", "Dependents", "PaperlessBilling", "SeniorCitizen"]
-    df_enc[binary_columns] = binary_oe.fit_transform(
-        df_enc[binary_columns]).astype("int64")
+    for col in binary_columns:
+        df_enc[col] = binary_oe.fit_transform(df_enc[[col]])
+        df_enc[col] = df_enc[col].astype("int64")
 
     df_enc = pd.get_dummies(df_enc, columns=["Contract", "PaymentMethod"],
                             drop_first=True, dtype="int64")
