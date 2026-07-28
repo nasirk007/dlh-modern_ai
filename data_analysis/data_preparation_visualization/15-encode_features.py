@@ -12,6 +12,7 @@ def encode_features(df):
     """
     Feature and target variable encoding is one of the preprocessing step
     in EDA and ML model training.
+    For practice see 15-practice.ipyn notebook on local machine.
     """
     df_enc = df.copy()
     target_le = preprocessing.LabelEncoder()
@@ -27,7 +28,7 @@ def encode_features(df):
 
     TG_oe = preprocessing.OrdinalEncoder()
     df_enc["TenureGroup"] = df_enc["TenureGroup"].astype("str")
-    df_enc["TenureGroup"] = TG_oe.fit_transform(df_enc[
-        "TenureGroup"])
+    df_enc[["TenureGroup"]] = TG_oe.fit_transform(df_enc[[
+        "TenureGroup"]])
 
     return (df_enc, target_le, binary_oe, TG_oe)
