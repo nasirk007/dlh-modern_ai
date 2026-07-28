@@ -10,17 +10,17 @@ def create_features(df):
     """Create new features based on existing ones.
     """
     # create an empty column for number of services
-    df["NumService"] = 0
+    df["NumServices"] = 0
     # create a new feature for number of services
     service_cols = ["MultipleLines", "OnlineSecurity", "OnlineBackup",
                     "InternetService", "DeviceProtection", "TechSupport",
                     "StreamingTV", "StreamingMovies"]
     for col in service_cols:
         if col == "InternetService":
-            df["NumService"] += df[col].map({"DSL": 1,
+            df["NumServices"] += df[col].map({"DSL": 1,
                                              "Fiber optic": 1, "No": 0})
         else:
-            df["NumService"] += df[col].apply(
+            df["NumServices"] += df[col].apply(
                 lambda x: 1 if x == "Yes" else 0)
     # create a new col as tenuregroup to dataframe
     # use pd.cut to create bins for tenure
