@@ -3,7 +3,6 @@
 this module contains functions to scale numeric variables
 into numerical value using scikit-learn library.
 """
-import pandas as pd
 from sklearn import preprocessing
 
 
