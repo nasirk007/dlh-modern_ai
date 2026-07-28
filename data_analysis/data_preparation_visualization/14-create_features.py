@@ -1,4 +1,3 @@
-# %%
 #!/usr/bin/env python3
 """
 Module for creating new features from existing ones in a DataFrame.
