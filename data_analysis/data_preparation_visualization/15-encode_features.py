@@ -21,7 +21,8 @@ def encode_features(df):
     binary_oe = preprocessing.OrdinalEncoder()
     binary_columns = [
         "Partner", "Dependents", "PaperlessBilling", "SeniorCitizen"]
-    df_enc[binary_columns] = binary_oe.fit_transform(df_enc[binary_columns])
+    df_enc[binary_columns] = binary_oe.fit_transform(
+        df_enc[binary_columns]).astype("int64")
 
     df_enc = pd.get_dummies(df_enc, columns=["Contract", "PaymentMethod"],
                             drop_first=True, dtype="int64")
@@ -29,6 +30,6 @@ def encode_features(df):
     TG_oe = preprocessing.OrdinalEncoder()
     df_enc["TenureGroup"] = df_enc["TenureGroup"].astype("str")
     df_enc[["TenureGroup"]] = TG_oe.fit_transform(df_enc[[
-        "TenureGroup"]])
+        "TenureGroup"]]).astype("int64")
 
     return (df_enc, target_le, binary_oe, TG_oe)
