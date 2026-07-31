@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-"""module that evaluate linear regression model
+"""module that evaluate regression model
+using Scikit-learn.
 """
 import numpy as np
 from sklearn import metrics
 
 
 def evaluation_metrics_for_regression(y_true, y_pred):
-    """to compute KPIs of regression model
+    """to compute KPIs of regression model,
+    including mean absolute error, mean squared error, 
+    root mean squared error and R Square.
     """
     mae = metrics.mean_absolute_error(y_true, y_pred)
     mse = metrics.mean_squared_error(y_true, y_pred)
