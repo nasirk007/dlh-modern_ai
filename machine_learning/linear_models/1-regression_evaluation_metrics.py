@@ -8,7 +8,7 @@ from sklearn import metrics
 
 def evaluation_metrics_for_regression(y_true, y_pred):
     """to compute KPIs of regression model,
-    including mean absolute error, mean squared error, 
+    including mean absolute error, mean squared error,
     root mean squared error and R Square.
     """
     mse = metrics.mean_squared_error(y_true, y_pred)
