@@ -11,8 +11,8 @@ def evaluation_metrics_for_regression(y_true, y_pred):
     including mean absolute error, mean squared error, 
     root mean squared error and R Square.
     """
-    mae = metrics.mean_absolute_error(y_true, y_pred)
     mse = metrics.mean_squared_error(y_true, y_pred)
     rmse = metrics.root_mean_squared_error(y_true, y_pred)
+    mae = metrics.mean_absolute_error(y_true, y_pred)
     r2 = metrics.r2_score(y_true, y_pred)
-    return (mae, mse, rmse, r2)
+    return (mae, rmse, mse, r2)
