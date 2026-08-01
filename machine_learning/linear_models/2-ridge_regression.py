@@ -2,7 +2,6 @@
 """module that evaluate regression model
 using Scikit-learn.
 """
-import numpy as np
 from sklearn import linear_model
 
 
