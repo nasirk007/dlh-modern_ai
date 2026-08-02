@@ -6,6 +6,7 @@ from sklearn import svm
 
 def get_SVM_model(name, random_state):
     """to tune regression model using support vector machine."""
-    name = ['linear', 'poly', 'rbf']
-    model = svm.SVC(kernel=name, random_state=random_state)
-    return model
+    if not in ['linear', 'poly', 'rbf']:
+        raise ValueError("Invalid kernel name")
+    svm_model = svm.SVC(kernel=name, random_state=random_state)
+    return svm_model
