@@ -5,9 +5,20 @@ import shap
 
 
 def get_shap_explainer_and_values(model, X_train, X_test):
-    """to get shap explainer and values for the
-    machine learning model. It uses training model
-    and test data to get the shap values.
+    """X_train is used to initialize the explainer,
+    while X_test is used to compute the SHAP values
+    for the predictions made by the model. The function
+    returns both the explainer object and the computed SHAP
+    values for further analysis or visualization.
+
+    Arguments:
+    model: A trained regression model
+    X_train: Input data used to initialize the explainer
+    X_test: Input data to explain
+    
+    Returns:
+    explainer: SHAP explainer object
+    shap_values: SHAP values for the predictions on X_test
     """
     explainer = shap.Explainer(model, X_train)
     shap_values = explainer(X_test)
