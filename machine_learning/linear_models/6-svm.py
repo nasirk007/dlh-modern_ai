@@ -6,5 +6,6 @@ from sklearn import svm
 
 def get_SVM_model(name, random_state):
     """to tune regression model using support vector machine."""
-    model = svm.SVC(random_state=random_state)
+    model = svm.SVC(kernel=['linear', 'poly', 'rbf'],
+                    random_state=random_state)
     return model
