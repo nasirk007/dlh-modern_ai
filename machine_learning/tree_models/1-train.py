@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Module for training decision tree model."""
-from sklearn import tree
 
 
 def train_tree(clf, X, y):
