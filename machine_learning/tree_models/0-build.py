@@ -13,9 +13,9 @@ def build_decision_tree(min_samples_leaf, min_samples_split, random_state):
     random_state: The seed used by the random number generator.
     """
     # Create a decision tree classifier
-    model = tree.DecisionTreeClassifier(
+    clf = tree.DecisionTreeClassifier(
         min_samples_leaf=min_samples_leaf,
         min_samples_split=min_samples_split,
         random_state=random_state
     )
-    return model
+    return clf
