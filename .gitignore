@@ -6,3 +6,4 @@ __pycache__/
 Telco-Customer-Churn.csv
 precleaned-Telco-Customer-Churn.csv
 *.ipynb
+credit_risk_dataset.csv
