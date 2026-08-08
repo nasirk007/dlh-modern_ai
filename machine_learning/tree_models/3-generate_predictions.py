@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Module to do prediction with a decision tree model."""
-from sklearn import tree
 
 
 def generate_predictions(clf, X):
