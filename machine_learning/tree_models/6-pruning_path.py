@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Retrieve the Pruning Path of a Decision Tree."""
-from sklearn import model_selection
 
 
 def get_pruning_path(clf, X, y):
