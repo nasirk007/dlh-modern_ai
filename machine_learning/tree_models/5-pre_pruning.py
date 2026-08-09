@@ -47,6 +47,7 @@ def prepruning(X, y, clf):
         cv=5,
         n_jobs=-1,
     )
-
+    # train the model using grid search to improve model
+    # performance in terms of precision, recall and F1-score.
     grid_search.fit(X, y)
     return grid_search.best_params_
