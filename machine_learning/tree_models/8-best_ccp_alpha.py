@@ -28,9 +28,9 @@ def get_best_alpha(clfs, train_scores, test_scores, ccp_alphas):
     Find the best alpha value based on test performance.
     """
 
-    # Identify the maximum test accuracy achieved
-    max_test_score = max(test_scores)
-    
+
+    return best_alpha, best_clf
+
 
 
     
