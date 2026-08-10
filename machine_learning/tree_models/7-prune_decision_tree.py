@@ -7,7 +7,7 @@ train_tree = __import__('1-train').train_tree
 
 
 def prune_and_evaluate_trees(
-        X_train,y_train, X_test, y_test,
+        X_train, y_train, X_test, y_test,
         ccp_alphas, random_state, min_samples_leaf,
         min_samples_split
         ):
@@ -18,7 +18,8 @@ def prune_and_evaluate_trees(
     Arguments:
     X_train, y_train: Training data and labels
     X_test, y_test: Testing data and labels
-    ccp_alphas: A NumPy array of pruning alpha values to use for training different trees.
+    ccp_alphas: A NumPy array of pruning alpha values to use
+    for training different trees
     random_state: Integer seed for reproducibility.
     min_samples_leaf: Mini no of samples required at a leaf node
     min_samples_split: Mini no of samples required to split an internal node
@@ -31,20 +32,27 @@ def prune_and_evaluate_trees(
 
     Note with zero gini = pure node and further split needed
     means we arive the classification decision.
-    Impurities is simply the gini index of the node. In task-6, we reach impurity of 0.66
-    while alpha value on that path was 0.241, and if you remember
-    0.664 is gini of root node in our original tree (task-1). It means with this alpha (0.245)
-    we are going to chop whole tree except the roots. this alpha is too high, not good, create
-    overfit model. 
+    Impurities is simply the gini index of the node.
+    In task-6, we reach impurity of 0.66 while alpha
+    value on that path was 0.241, and if you remember
+    0.664 is gini of root node in our original tree (task-1).
+    It means with this alpha (0.245) we are going to chop whole
+    tree except the roots. this alpha is too high, not good,
+    create overfit model.
     """
-    clf = []
+    clfs = []
     train_score = []
     test_score = []
-    for alpha in clf:
-
-
-
-
-
-
-    return clf, train_score, test_score
+    for alpha in ccp_alphas:
+        clf = tree.DecisionTreeClassifier(
+            criterion="gini",
+            min_samples_leaf=min_samples_leaf,
+            min_samples_split=min_samples_split,
+            random_state=random_state
+            ccp_alpha=alpha
+            )
+        train_tree(clf, X_train, y_train)
+        clfs.append(clf)
+        train_score.append(clf.score(X_train, y_train))
+        test_score.append(clf.score(X_test, y_test))
+    return clfs, train_score, test_score
