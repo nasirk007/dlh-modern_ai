@@ -34,28 +34,36 @@ def get_best_alpha(clfs, train_scores, test_scores, ccp_alphas):
                     on test accuracy and generalization.
         best_clf: The trained classifier associated with the best alpha.
     """
-    best_index = 0
+    # Step 1: highest test accuracy
+    highest_test = max(test_scores)
 
-    for i in range(1, len(clfs)):
-        current_test = test_scores[i]
-        best_test = test_scores[best_index]
+    best_alpha = None
+    best_clf = None
+    smallest_gap = float("inf")
 
-        current_gap = abs(train_scores[i] - test_scores[i])
-        best_gap = abs(
-            train_scores[best_index] -
-            test_scores[best_index]
-            )
+    for clf, train, test, alpha in zip(
+            clfs,
+            train_scores,
+            test_scores,
+            ccp_alphas):
 
-        if current_test > best_test:
-            best_index = i
-        elif current_test == best_test:
-            if current_gap < best_gap:
-                best_index = i
-            elif current_gap == best_gap:
-                if ccp_alphas[i] > ccp_alphas[best_index]:
-                    best_index = i
+        # Ignore models that do not have the highest test score
+        if test != highest_test:
+            continue
 
-    best_alpha = ccp_alphas[best_index]
-    best_clf = clfs[best_index]
+        gap = abs(train - test)
+
+        # Better gap found
+        if gap < smallest_gap:
+            smallest_gap = gap
+            best_alpha = alpha
+            best_clf = clf
+
+        # Same gap -> choose larger alpha
+        elif gap == smallest_gap:
+
+            if alpha > best_alpha:
+                best_alpha = alpha
+                best_clf = clf
 
     return best_alpha, best_clf
