@@ -48,7 +48,7 @@ def prune_and_evaluate_trees(
             criterion="gini",
             min_samples_leaf=min_samples_leaf,
             min_samples_split=min_samples_split,
-            random_state=random_state
+            random_state=random_state,
             ccp_alpha=alpha
             )
         train_tree(clf, X_train, y_train)
