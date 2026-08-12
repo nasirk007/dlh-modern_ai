@@ -1,96 +1,48 @@
 # Unsupervised Learning Module
+This module builds a practical introduction to unsupervised machine learning. It is designed to turn unlabeled tabular data into insight by standardizing features, reducing dimensions, grouping similar observations, and validating clusters.
 
-This module teaches unsupervised learning methods for extracting meaningful structure from unlabeled data. It emphasizes feature scaling, dimensionality reduction, clustering, and validation so your work is both rigorous and presentation-ready.
+## Why Unsupervised Learning?
+Unsupervised learning is used when labels are unavailable. Rather than predicting a known target, it discovers structure, relationships, and hidden groups in data.
 
-## Module Purpose
+### How it differs from supervised learning
+- Supervised learning uses labeled examples to learn a mapping to a target variable.
+- Unsupervised learning explores unlabeled data to reveal patterns and groupings.
+- Supervised models answer "what label should this sample get?" while unsupervised models answer "how is this data organized?"
 
-Unsupervised learning is essential when labels are unavailable and the goal is to discover groups, reduce dimensionality, or visualize complex datasets. This module focuses on practical Scikit-Learn workflows for PCA, K-Means, and hierarchical clustering.
+## Algorithms in This Module
 
-## Resources
+### Feature Standardization
+Standardization rescales each feature so it has a mean of 0 and a standard deviation of 1. This step is essential for distance-based and variance-based algorithms.
 
-### Read or watch
-- What is unsupervised learning?
-- Importance of Feature Scaling
-- What Is Principal Components Analysis?
-- Principal Component Analysis (PCA): A Step-by-Step Explanation
-- In Depth: Principal Component Analysis
-- Principal Component Analysis (PCA) with Scikit-Learn
-- How to Get Superior Results with Fewer Dimensions?
-- In Depth: k-Means Clustering
-- Visualizing K-Means Clustering
-- Introduction to k-Means Clustering with scikit-learn in Python
-- Determine the optimal value of K in K-Means Clustering - ML
-- Elbow Method vs. Silhouette Score: which is better?
-- Revisiting k-Means: 3 Approaches to Make It Work Better
-- Elbow Method for optimal value of k in KMeans
-- What is Agglomerative clustering ?
-- Implementing Agglomerative Clustering using Sklearn
-- Agglomerative clustering with and without structure in Scikit Learn
-- How to Combine PCA and K-means Clustering in Python?
-- Agglomerative Clustering (Dendrograms & PCA)
-- Clustering and Principal Component Analysis (PCA) from Sklearn
+### Principal Component Analysis (PCA)
+PCA is a dimensionality reduction technique that transforms data into a smaller number of principal components while preserving variance.
+- Function: `Apply_PCA(X, n_components, random_state)`
+- Output: PCA-transformed data and a fitted PCA instance
 
-### References
-- `load_wine`
-- Preprocessing data
-- `StandardScaler`
-- Decomposing signals in components
-- PCA
-- `PCA.fit_transform`
-- Clustering
-- `KMeans`
-- `KMeans.fit`
-- `silhouette_score`
-- A demo of K-Means clustering on the handwritten digits data
-- Selecting the number of clusters with silhouette analysis on KMeans clustering
-- `AgglomerativeClustering`
+### K-Means Clustering
+K-Means groups observations into `k` clusters by iteratively assigning points to the nearest centroid and updating each centroid.
+- Function: `K_Means(X, n_clusters, random_state)`
+- Output: a fitted `KMeans` model
 
-## Learning Objectives
+### Optimal K Selection
+This task evaluates clustering models with inertia and silhouette scores to identify the most appropriate number of clusters.
+- Function: `optimal_k(X, max_clusters, random_state)`
+- Output: cluster counts, inertia values, and silhouette scores
 
-By the end of this project, you should be able to explain the following concepts without using Google:
+### Agglomerative Hierarchical Clustering
+Hierarchical clustering builds nested clusters using a linkage criterion. Ward linkage groups data by minimizing variance within clusters.
+- Function: `Agglomerative_Clustering(X, n_clusters, random_state, n_components, use_pca_data=True)`
+- Output: fitted model, data used for fitting, and silhouette score
 
-### General
-- What is unsupervised learning?
-- How does unsupervised learning differ from supervised learning?
-- Why is it important to standardize data before applying clustering algorithms?
-- What is dimensionality reduction and why is it useful?
-- What is PCA and how does it help with dimensionality reduction?
-- What is explained variance in PCA and why does it matter?
-- What is K-Means clustering and how does it work?
-- What are cluster centroids?
-- What is the Elbow Method and what is it used for?
-- How do you evaluate the quality of clusters?
-- What does the Silhouette Score indicate about clusters?
-- What is hierarchical (Agglomerative) clustering?
-- What is a dendrogram and how can it help interpret clusters?
-- What are linkage methods in hierarchical clustering?
-- How can you visualize clusters in reduced dimensions?
-- How can dimensionality reduction affect clustering results?
-
-## Requirements
-
-- All files will be interpreted/compiled on Ubuntu 20.04 LTS using `python3` (version `3.11`)
-- All files should end with a new line
-- The first line of all files should be exactly `#!/usr/bin/env python3`
-- A `README.md` file at the root of the project folder is mandatory
-- Your code should use `pycodestyle` style (version `2.14.0`)
-- All your modules should have documentation strings
-- All your classes should have documentation strings
-- All your functions (inside and outside a class) should have documentation strings
-- All your files must be executable
-- The length of your files may be tested using `wc`
-
-### Required package versions
-- `numpy==2.0.2`
-- `pandas==2.2.2`
-- `scikit-learn==1.6.1`
-- `matplotlib==3.10.0`
-- `seaborn==0.13.2`
-- `scipy==1.16.0`
-- `pillow==11.3.0`
+## Real-World Business Applications
+These techniques are especially valuable in finance and audit workflows:
+- Segmenting investment portfolios or client groups using transaction and risk data
+- Identifying anomalous accounting entries or fraud signals in audit datasets
+- Reducing financial factor sets for valuation models and risk dashboards
+- Grouping similar assets for relative valuation, peer benchmarking, or sector analysis
+- Detecting unusual investment behavior, outlier issuers, or unexpected market structures
 
 ## Project Workflow
-
 1. Load the dataset and inspect its structure
 2. Standardize numeric features with `StandardScaler`
 3. Apply PCA and inspect explained variance
@@ -99,20 +51,24 @@ By the end of this project, you should be able to explain the following concepts
 6. Train Agglomerative Clustering and analyze dendrograms
 7. Visualize clustering results in reduced-dimensional space
 
-## Recommended Task Structure
+## Task Overview
 
-```text
-unsupervised_learning/
-├── 0-standardize.py
-├── 1-pca.py
-├── 2-k_means.py
-├── 3-optimal_k.py
-├── 4-agglomerative.py
-└── README.md
-```
+### 0. Feature Standardization
+`Standardize(X)` scales tabular data so all features contribute proportionally.
+
+### 1. Dimensionality Reduction with PCA
+`Apply_PCA(X, n_components, random_state)` performs PCA and returns transformed data and the fitted PCA model.
+
+### 2. Clustering with K-Means
+`K_Means(X, n_clusters, random_state)` trains and returns a fitted K-Means model.
+
+### 3. Choosing the Optimal K for K-Means
+`optimal_k(X, max_clusters, random_state)` evaluates inertia and silhouette score for cluster counts from 2 to `max_clusters`.
+
+### 4. Agglomerative Hierarchical Clustering
+`Agglomerative_Clustering(X, n_clusters, random_state, n_components, use_pca_data=True)` applies optional PCA, fits a Ward linkage model, and returns model, data used, and silhouette score.
 
 ## Skills Developed
-
 - Unsupervised learning fundamentals
 - Data preprocessing and feature scaling
 - Dimensionality reduction with PCA
