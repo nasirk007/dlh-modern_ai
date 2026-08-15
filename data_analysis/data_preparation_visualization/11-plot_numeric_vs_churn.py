@@ -26,9 +26,9 @@ def plot_numeric_vs_churn(df, col):
     Yes_data = df[df["Churn"] == "Yes"][col]
     No_data = df[df["Churn"] == "No"][col]
     plt.hist(
-        [Yes_data, No_data],
+        [No_data, Yes_data],
         bins=30,
-        label=["Yes", "No"]
+        label=["No", "Yes"]
         )
     plt.legend(title="Churn")
     plt.xlabel(col)
