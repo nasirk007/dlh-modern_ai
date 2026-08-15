@@ -29,10 +29,12 @@ def plot_numeric_vs_churn(df, col):
         [Yes_data, No_data],
         bins=30,
         label=["Yes", "No"],
-        alpha=0.6, density=True
+        alpha=0.6,
+        density=True
         )
     plt.legend(title="Churn")
     plt.xlabel(col)
+    plt.ylabel("Density")
     plt.title(f"{col} Distribution by Churn")
     plt.show()
     return None
