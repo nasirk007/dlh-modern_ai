@@ -32,7 +32,9 @@ def plot_correlation_heatmap(df):
     sns.heatmap(data=corr, vmax=1, vmin=-1, cmap="coolwarn", annot=True)
     plt.title("Correlation Matrix")
     plt.show()
-    # The correlation matrix can identify potential multicollinearity, which can guide feature selection or combination.
-    # tenure and TotalCharges show a strong positive correlation (r = 0.83) but
-    # tenure and MonthlyCharges exhibit a weak correlation (r = 0.25).
+    # correlation matrix can identify potential multicollinearity,
+    # which can guide feature selection or combination.
+    # tenure and TotalCharges show a strong positive correlation
+    # (r = 0.83) but tenure and monthly charges
+    # a weak correlation (r = 0.25).
     return None
