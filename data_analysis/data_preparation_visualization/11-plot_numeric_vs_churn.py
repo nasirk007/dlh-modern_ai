@@ -25,7 +25,12 @@ def plot_numeric_vs_churn(df, col):
     # Transparency(alpha): let both histograms be visible.
     Yes_data = df[df["Churn"] == "Yes"][col]
     No_data = df[df["Churn"] == "No"][col]
-    plt.hist([Yes_data, No_data], bins=30, label=["Yes", "No"])
+    plt.hist(
+        [Yes_data, No_data],
+        bins=30,
+        label=["Yes", "No"],
+        alpha=0.6, density=True
+        )
     plt.legend(title="Churn")
     plt.xlabel(col)
     plt.title(f"{col} Distribution by Churn")
