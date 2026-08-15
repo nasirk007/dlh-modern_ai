@@ -15,7 +15,6 @@ def chi_square_tests(df):
     A small p-value (commonly < 0.05) suggests the feature and Churn
     are not independent, while a larger p-value suggests the data do not
     provide strong evidence against independence.
-    
     must see 12-practice.ipyn file, how concept applys
     """
     dictionary = {}
@@ -29,6 +28,6 @@ def chi_square_tests(df):
             # it will compute 4 values and this test need to be done
             # on categorical feature/data/info rather numeric as well
             # each result can be access using index approach [0][1] etc
-            chi2, p_value, dof, expected = stats.chi2_contingency(table)          
-            dictionary[feature] = p_value
+            chi2, p_value, dof, expected = stats.chi2_contingency(table)
+        dictionary[feature] = p_value
     return dictionary
