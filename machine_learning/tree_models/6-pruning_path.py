@@ -42,7 +42,7 @@ def get_pruning_path(clf, X, y):
 
     How prunning path work becuase it return 11 alpha/impurties or gini value
     rather 13, becuase the tree has total 13 nodes (Task-1). Prune is not going
-    to romve nodes rather it remove 1 decision node and 2 leaf nodes. 
+    to romve nodes rather it remove 1 decision node and 2 leaf nodes.
     """
     path = clf.cost_complexity_pruning_path(X, y)
     ccp_alphas, impurities = path.ccp_alphas, path.impurities
