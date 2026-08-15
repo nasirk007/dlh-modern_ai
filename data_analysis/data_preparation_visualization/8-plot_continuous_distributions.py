@@ -36,17 +36,24 @@ def plot_continuous_distributions(df, columns_to_plot=None):
 
     for i, column in enumerate(columns_to_plot):
         # loop through each numerical column using its index and name
-        # pick one column under loop, check it first whether it contain missing value
-        # remove NaN/None value from that particular columns, this is to make sure
-        # subplot does not have gap, meams consistently bar appears to reflect data in them 
+        # pick one column under loop, check it first whether
+        # it contain missing value
+        # remove NaN/None value from that particular columns,
+        # this is to make sure
+        # subplot does not have gap, meams consistently bar
+        # appears to reflect data in them
         data = df[column].dropna()
-        # create histogram on left side, as axes is subplot and i=rowofgrid
-        # while j=colofgrid, and here there are 2 col in grid, 0 represent first
-        # col which will on left while 1 will represent col on right side of grid
-        # create 30 bars from data, data is one numeric column each time loop will run
-        # through from start to end, dansity is simply count/frequency/dansity/probability of 
-        # continous values in one particular numerical columns, Alpha make bars transparent,
-        # while boarder will be colored black
+        # create histogram on left side, as axes is subplot & i=rowofgrid
+        # while j=colofgrid, and here there are 2 column
+        # in grid, 0 represent first
+        # col which will on left while 1 will represent column
+        # on right side of grid
+        # create 30 bars from data, data is one numeric column
+        # each time loop will run
+        # through from start to end, dansity is simply
+        # count/frequency/dansity/probability of
+        # continous values in one particular numerical columns, Alpha
+        # make sure transparancy, while boarder will be colored black
         axes[i, 0].hist(
             data,
             bins=30,
@@ -54,14 +61,18 @@ def plot_continuous_distributions(df, columns_to_plot=None):
             alpha=0.7,
             edgecolor='black'
             )
-        # on top of histrogram curve type plot also needed and this curve can be
-        # plotted using scientisific & statistical library of python "Scipy"
-        # gaussian_kde() calculates a smooth probability curve 
+        # on top of histrogram curve type plot also needed
+        # and this curve can be
+        # plotted using scientisific & statistical library
+        # of python "Scipy"
+        # gaussian_kde() calculates a smooth probability curve
         # KDE = Kernel Density Estimation
-        # using numpy array, creates 200 evenly-spaced points from min to max value
+        # using numpy array, creates 200 evenly-spaced points
+        # from min to max value
         # again i=row in the grid while 0 is column of the grid
         # loop need to move row and col wise for each column curve plot
-        # data or values need to draw this dotted line curve is again values from each column
+        # data or values need to draw this dotted line curve
+        # is again values from each column
         # and which is under the loop df[column].dropna()
         kde = stats.gaussian_kde(data)
         x_values = np.linspace(data.min(), data.max(), 200)
@@ -74,21 +85,27 @@ def plot_continuous_distributions(df, columns_to_plot=None):
         axes[i, 0].set_title(f"{column} Histogram + KDE")
 
         # this represent the right side plot in the grid
-        # box plot normally use percentile to represent the data in each col under loop
-        # very=false means draw the box plot horizontally rather vertically
+        # box plot normally use percentile to represent
+        # the data in each col under loop
+        # very=false means draw box plot horizontally rather vertically
         # its part of syntax understanding
         axes[i, 1].boxplot(data, vert=False)
         axes[i, 1].set_title(f"{column} Boxplot")
 
     plt.tight_layout()
     # what does hist and boxplot is telling after writing above
-    # tenure: there are more short-term customers than medium-term ones, with a tail of long-term customers.
-    # monthlycharges: The histogram shows many customers paying in the lower range, 
-    # KDE curve suggest one main cluster of lower monthly bills, 
-    # and boxplot tell middle 50% customers pay somewhere in middlerange, lower and higher monthly charge customers also exist
-    # totalcharges: most customers have low total charges, and a smaller number have very high totals.
-    # because total charges grow with tenue, so new customer cluster at low total
-    # boxplot reinforce skewness, median is much close to lower end and upper stick/whister extend for higher
+    # tenure: there are more short-term customers than medium-term ones,
+    # with a tail of long-term customers.
+    # monthlycharges: histogram shows many customers paying in lower range
+    # KDE curve suggest one main cluster of lower monthly bills
+    # and boxplot tell middle 50% customers pay somewhere in middlerange
+    # lower and higher monthly charge customers also exist
+    # totalcharges: most customers have low total charges
+    # and a smaller number have very high totals.
+    # because total charges grow with tenue, so new customer
+    # cluster at low total
+    # boxplot reinforce skewness, median is much close to lower
+    # end and upper stick/whister extend for higher
     plt.savefig("Task_8.png")
     plt.show()
 
