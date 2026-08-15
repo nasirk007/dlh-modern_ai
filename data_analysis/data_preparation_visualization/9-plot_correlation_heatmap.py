@@ -29,7 +29,7 @@ def plot_correlation_heatmap(df):
     """
     plt.figure(figsize=(6, 5))
     corr = df.corr(numeric_only=True)
-    sns.heatmap(data=corr, vmax=1, vmin=-1, cmap="coolwarn", annot=True)
+    sns.heatmap(data=corr, vmax=1, vmin=-1, cmap="coolwarm", annot=True)
     plt.title("Correlation Matrix")
     plt.show()
     # correlation matrix can identify potential multicollinearity,
