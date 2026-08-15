@@ -20,8 +20,6 @@ def scale_numeric(df):
     # useful for normally distributed features.
     # feature means categorial datatype columns excluding target variable
     # ("Churn") which is also categorical datatype column.
-    # https://www.geeksforgeeks.org/data-analysis/data-preprocessing-machine-learning-python/
-
     std_scaler = preprocessing.StandardScaler()
     df[["MonthlyCharges", "TotalCharges"]] = std_scaler.fit_transform(
         df[["MonthlyCharges", "TotalCharges"]])
