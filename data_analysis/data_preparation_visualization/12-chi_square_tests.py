@@ -29,5 +29,5 @@ def chi_square_tests(df):
             # on categorical feature/data/info rather numeric as well
             # each result can be access using index approach [0][1] etc
             chi2, p_value, dof, expected = stats.chi2_contingency(table)
-        dictionary[feature] = p_value
+            dictionary[feature] = p_value
     return dictionary
