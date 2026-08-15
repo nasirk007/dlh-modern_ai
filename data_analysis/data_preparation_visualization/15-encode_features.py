@@ -40,7 +40,7 @@ def encode_features(df):
         "Partner", "Dependents", "PaperlessBilling", "SeniorCitizen"]
     for col in binary_columns:
         df_enc[col] = binary_oe.fit_transform(df_enc[[col]])
-        df_enc[col] = df_enc[col].astype("int64")
+        df_enc[col] = df_enc[col].astype("int")
 
     # onehot encoder is another transformer of sklearn library
     # which is used to convert more than 2 categorical
@@ -67,7 +67,7 @@ def encode_features(df):
     # preprocessing.OneHotEncoder().fit_transform(
     # df_enc[["Contract", "PaymentMethod"]])
     df_enc = pd.get_dummies(df_enc, columns=["Contract", "PaymentMethod"],
-                            drop_first=True, dtype="int64")
+                            drop_first=True, dtype="int")
 
     TG_oe = preprocessing.OrdinalEncoder()
     # ordinalencoder expect 2D array or 2 column table
@@ -82,7 +82,7 @@ def encode_features(df):
     # type and we will critical data before encoding and modelling
     # pd.to_numeric() method in initial stage of data clearning &
     # transforming, rather at encoding feature stage.
-    df_enc["TenureGroup"] = df_enc["TenureGroup"].astype("str")
     df_enc[["TenureGroup"]] = TG_oe.fit_transform(df_enc[["TenureGroup"]])
+    df_enc["TenureGroup"] = df_enc["TenureGroup"].astype("str")
 
     return (df_enc, target_le, binary_oe, TG_oe)
