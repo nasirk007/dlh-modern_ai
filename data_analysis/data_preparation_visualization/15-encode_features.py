@@ -82,7 +82,7 @@ def encode_features(df):
     # type and we will critical data before encoding and modelling
     # pd.to_numeric() method in initial stage of data clearning &
     # transforming, rather at encoding feature stage.
-    df_enc["TenureGroup"] = df_enc["TenureGroup"].astype("int")
+    df_enc["TenureGroup"] = df_enc["TenureGroup"].astype("str")
     df_enc[["TenureGroup"]] = TG_oe.fit_transform(df_enc[["TenureGroup"]])
 
     return (df_enc, target_le, binary_oe, TG_oe)
