@@ -2,7 +2,6 @@
 """
 This module performs chi-square tests for categorical features, using SciPy.
 """
-import pandas as pd
 from scipy import stats
 
 
