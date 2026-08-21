@@ -1,20 +1,19 @@
 #!/usr/bin/env python3
 """
-Build functional shallow newral network
+Configure model for training
 """
 from tensorflow import keras
 
 
-def build_model(input_dim, neurons_h):
+def compile_model(model, learning_rate=0.01):
     """
-    Perform multiclass classification
-    without using the Sequential class
+    Stochastic gradient descent,
+    Binary cross-entropy loss,
+    Accuracy metric for monitoring
     """
-
-    inputs = keras.layers.Input(shape=(input_dim,))
-    hidden = keras.layers.Dense(neurons_h, activation='sigmoid')(inputs)
-    outputs = keras.layers.Dense(10, activation='softmax')(hidden)
-
-    model = keras.Model(inputs, outputs)
-
-    return model
+    optimizer = keras.optimizers.SGD(learning_rate=learning_rate)
+    model.compile(
+        optimizer=optimizer,
+        loss='binary_crossentropy',
+        metrics=['accuracy']
+    )
