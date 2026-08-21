@@ -1,19 +1,14 @@
 #!/usr/bin/env python3
 """
-Save space, move only weights
+Generate predictions using a trained model
 """
+import tensorflow as tf
 
 
-def save_model_weights(model, filepath):
+def predict(model, X, verbose=0):
     """
-    Don's need to save the entire model
-    Just take from what you can replicate it
+    Predict class labels for input data X
     """
-    model.save_weights(filepath)
+    probabilities = model.predict(X, verbose=verbose)
 
-
-def load_model_weights(model, filepath):
-    """
-    Git saved waits to the model
-    """
-    model.load_weights(filepath)
+    return tf.argmax(probabilities, axis=1)
