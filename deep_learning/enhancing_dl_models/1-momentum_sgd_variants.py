@@ -32,7 +32,7 @@ def get_optimizer_SGD(
     elif name == 'SGD+Momentum+Nesterov':
         nesterov = True
     else:
-        raise ValueError('Check func documentation for possible names')
+        raise ValueError('Check function documentation for possible names')
 
     optimizer = keras.optimizers.SGD(
         learning_rate=lr,
