@@ -1,24 +1,35 @@
 #!/usr/bin/env python3
 """
-Build a deep Neural Network using
-Sequential class
-not safe, he-he
+Observe model performance with
+TENSORBOARD
 """
+import datetime
 from tensorflow import keras
 
 
-def build_deep_model(input_dim, hidden_layers):
+def log_to_tensorboard(
+        log_dir,
+        model,
+        X, Y, epochs, verbose=1
+):
     """
-    Performs multiclass classification
+    Train a model while logging
+    TensorBoard data
     """
 
-    model = keras.Sequential()
+    timestamp = datetime.datetime.now().strftime(
+        '%Y%m%d-%H%M%S'
+    )
+    full_log_dir = f'{log_dir}/{timestamp}'
 
-    model.add(keras.layers.Input(shape=(input_dim,)))
+    tensorboard_callback = keras.callbacks.TensorBoard(
+        log_dir=full_log_dir,
+        histogram_freq=1
+    )
 
-    for neurons in hidden_layers:
-        model.add(keras.layers.Dense(neurons, activation='relu'))
-
-    model.add(keras.layers.Dense(10, activation='softmax'))
-
-    return model
+    model.fit(
+        X, Y,
+        epochs=epochs,
+        verbose=verbose,
+        callbacks=[tensorboard_callback]
+    )
