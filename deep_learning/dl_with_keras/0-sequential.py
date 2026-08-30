@@ -14,7 +14,7 @@ def build_model(input_dim, neurons_h):
     model = keras.Sequential(
         [
             keras.layers.Dense(neurons_h, activation='sigmoid',
-                               shape=(input_dim,)),
+                               shape=(input_dim)),
             keras.layers.Dense(10, activation='softmax')
         ]
     )
