@@ -11,7 +11,7 @@ def build_model(input_dim, neurons_h):
     without using the Sequential class
     """
 
-    inputs = keras.layers.Input(shape=(input_dim,))
+    inputs = keras.layers.Input(shape=(input_dim))
     hidden = keras.layers.Dense(neurons_h, activation='sigmoid')(inputs)
     outputs = keras.layers.Dense(10, activation='softmax')(hidden)
 
