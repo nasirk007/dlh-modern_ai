@@ -15,7 +15,7 @@ def build_model(input_dim, neurons_h):
         [
             keras.layers.Dense(
                 neurons_h,
-                activation='Sigmoid',
+                activation='sigmoid',
                 input_shape=(input_dim,)  # Must be a tuple
             ),
             keras.layers.Dense(10, activation='softmax')
