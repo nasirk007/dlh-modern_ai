@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Add a little head (dikson_puaro)
+Add a classification head
 on top of one with the brains (feature extractor)
 """
 from tensorflow import keras
