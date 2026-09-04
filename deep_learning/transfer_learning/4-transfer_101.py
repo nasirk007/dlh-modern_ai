@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-train image classifier with transfer learning on Caltech-101
+Train, fine-tune, and save a Caltech-101 image classifier
 """
 import tensorflow as tf
 from tensorflow import keras
