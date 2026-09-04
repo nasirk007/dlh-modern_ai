@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Train, fine-tune, and save a Caltech-101 image classifier
+Train, fine-tune, and save Caltech-101 image classifier
 """
 import tensorflow as tf
 from tensorflow import keras
