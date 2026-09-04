@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-Well, you can now get a bit wild and train on your
-funky data a few base model layers
+Unfreeze the top layers of a model
 """
 
 
