@@ -9,7 +9,7 @@ def build_feature_extractor():
     """
     Loads MobileNetV2 without top layer,
     freezes its weights, and
-    attaches a GlobalAveragePooling2D layer on top.
+    attaches a Global-Average-Pooling-2D layer on top.
     """
     base_model = keras.applications.MobileNetV2(
         weights='imagenet',
