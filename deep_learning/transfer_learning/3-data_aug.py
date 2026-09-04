@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Literaly build a reusable augmentation pipe. Pip-pip!
+Build a data augmentation pipeline
 """
 import tensorflow as tf
 
