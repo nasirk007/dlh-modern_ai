@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Pull a awift brain and preserve it's knowledge
+Pull a frozen feature extractor and preserve its
+knowledge (weights) for transfer learning
 """
 from tensorflow import keras
 
