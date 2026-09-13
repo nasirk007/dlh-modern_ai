@@ -43,7 +43,9 @@ def basic_aug(image, bboxes, labels):
         bbox_params=albumentations.BboxParams(
             format="pascal_voc",
             label_fields=["labels"]
-        )
+        ),
+        # Make the random augmentation reproducible
+        seed=42
     )
 
     # Apply augmentation to the image, boxes, and labels
