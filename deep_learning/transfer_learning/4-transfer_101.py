@@ -19,7 +19,7 @@ def train_transfer_model():
     b_ze = 32
 
     train_data = keras.utils.image_dataset_from_directory(
-        data_dir=d_dir,
+        directory=d_dir,
         validation_split=vs,
         subset='training',
         seed=sd,
@@ -28,7 +28,7 @@ def train_transfer_model():
     )
 
     vld_data = keras.utils.image_dataset_from_directory(
-        data_dir=d_dir,
+        directory=d_dir,
         validation_split=vs,
         subset='validation',
         seed=sd,
