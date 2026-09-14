@@ -1,0 +1,20 @@
+# Local Python environment and caches
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Local configuration and plotting caches
+.config/
+.mplconfig/
+
+# Downloaded data and pretrained model weights
+data/
+art_aicare_paintings/
+yolo11n.pt
+
+# Generated experiment outputs
+cnn_scene_lab/
+object_finder_results/
+visual_art_results/
+*.zip
