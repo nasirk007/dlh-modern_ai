@@ -3,61 +3,48 @@
 This module applies YOLO-compatible data augmentation
 using Albumentations.
 """
-import albumentations
+import albumentations as A
 import numpy as np
+import cv2
 
 
 def basic_aug(image, bboxes, labels):
     """
     Apply YOLO-compatible data augmentation using Albumentations.
-    The function must apply the following transformations
-    - random horizontal flipping (p = 0.5)
-    - brightness/contrast augmentation (p = 0.2)
-    - Affine (translate_percent: 0.1, scale 0.1, rotate [-30, 0] with p = 0.5)
-
-    Args:
-        image (np.ndarray): Input image
-        bboxes (List[List[int]]): Bounding boxes in Pascal VOC format
-        labels (List[int]): Class labels corresponding to each bounding box
-
-    Returns:
-        the augmented image np.ndarray,
-        augmented bounding boxes np.ndarray and labels List[int]
     """
-    # Create the augmentation pipeline
-    transform = albumentations.Compose(
+    # Create the augmentation pipeline with exact parameters
+    transform = A.Compose(
         [
-            # Flip the image horizontally with 50% probability
-            albumentations.HorizontalFlip(p=0.5),
-            # Randomly change brightness and contrast
-            albumentations.RandomBrightnessContrast(p=0.2),
-            # Move, resize, and rotate the image
-            albumentations.Affine(
+            A.HorizontalFlip(p=0.5),
+            A.RandomBrightnessContrast(p=0.2),
+            A.Affine(
                 translate_percent=0.1,
                 scale=0.1,
                 rotate=(-30, 0),
-                p=0.5
+                p=0.5,
+                interpolation=cv2.INTER_LINEAR,
+                border_mode=cv2.BORDER_CONSTANT,
+                border_value=0,
+                crop_border=False,
+                keep_size=True
             )
         ],
-        # Tell Albumentations how the bounding boxes are formatted
-        bbox_params=albumentations.BboxParams(
+        bbox_params=A.BboxParams(
             format="pascal_voc",
             label_fields=["labels"]
         ),
-        # Make the random augmentation reproducible
         seed=42
     )
 
-    # Apply augmentation to the image, boxes, and labels
+    # Apply augmentation
     augmented = transform(
         image=image,
         bboxes=bboxes,
         labels=labels
     )
 
-    # Get the augmented results
-    augmented_image = np.array(augmented["image"])
-    augmented_bboxes = np.array(augmented["bboxes"])
-    augmented_labels = augmented["labels"]
-
-    return augmented_image, augmented_bboxes, augmented_labels
+    return (
+        np.array(augmented["image"]),
+        np.array(augmented["bboxes"]),
+        augmented["labels"]
+    )
