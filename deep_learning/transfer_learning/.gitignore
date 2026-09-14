@@ -12,6 +12,9 @@ __pycache__/
 data/
 art_aicare_paintings/
 yolo11n.pt
+101_ObjectCategories/
+101_ObjectCategories.tar.gz
+caltech101_model.h5
 
 # Generated experiment outputs
 cnn_scene_lab/
