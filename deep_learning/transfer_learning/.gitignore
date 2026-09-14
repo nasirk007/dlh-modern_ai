@@ -12,6 +12,8 @@ __pycache__/
 data/
 art_aicare_paintings/
 yolo11n.pt
+new_classes_before_training.pt
+blood_cells_yolo11n_best.pt
 101_ObjectCategories/
 101_ObjectCategories.tar.gz
 caltech101_model.h5
@@ -20,4 +22,7 @@ caltech101_model.h5
 cnn_scene_lab/
 object_finder_results/
 visual_art_results/
+evaluation/
+results/
+runs/
 *.zip
