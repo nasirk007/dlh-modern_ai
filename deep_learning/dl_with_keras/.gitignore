@@ -1,0 +1,10 @@
+# Local Python environment and caches
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Generated training and TensorBoard outputs
+logs/
+*.keras
+*.h5
