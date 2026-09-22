@@ -8,6 +8,13 @@ __pycache__/
 .config/
 .mplconfig/
 
+# Practice notebooks and local artifacts
+CNN_TransferLearn_Recommender.ipynb
+CNN_Visual_Pattern_Recog.ipynb
+FineTune_Transfer_Learning.ipynb
+Started_with_PyTorch.ipynb
+Transfer_Learning_Instructor_Executed.ipynb
+
 # Downloaded data and pretrained model weights
 data/
 art_aicare_paintings/
