@@ -64,4 +64,5 @@ def clean_text(text, replace_num=True,
     # 8. one space between words
     text = re.sub(r'\s+', ' ', text)
     text = text.strip()
+    # Pass the normalized message to the next pipeline step.
     return text
