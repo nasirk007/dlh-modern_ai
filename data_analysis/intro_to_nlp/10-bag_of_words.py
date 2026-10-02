@@ -23,5 +23,6 @@ def bag_of_words(corpus_tokens, max_features=5000, ngram_range=(1, 2),
         max_df=max_df,
         binary=binary)
 
+    # Learn the vocabulary and encode documents as sparse token counts.
     X = vectorizer.fit_transform(docs)
     return X, vectorizer
