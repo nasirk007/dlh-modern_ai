@@ -31,4 +31,5 @@ def explore_data(df):
     ax2.set_xlabel("length")
     ax2.set_ylabel("count")
 
+    # Keep both plots readable in the shared figure.
     plt.tight_layout()
