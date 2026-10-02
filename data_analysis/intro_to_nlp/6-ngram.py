@@ -6,10 +6,12 @@ import nltk
 def generate_ngrams(tokens, n=2):
     """Make n-grams from the tokens and join each one with "_"
     (["call", "now"] -> "call_now"). Returns a list of strings."""
+    # Require enough tokens to form at least one group.
     if not isinstance(tokens, list) or len(tokens) < n:
         return []
 
     result = []
+    # Join each consecutive token group into a single feature string.
     for gram in nltk.ngrams(tokens, n):
         result.append("_".join(gram))
     return result
