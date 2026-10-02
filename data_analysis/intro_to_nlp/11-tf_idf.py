@@ -24,5 +24,6 @@ def tf_idf(corpus_tokens, max_features=5000, ngram_range=(1, 2),
         max_df=max_df,
         norm=norm)
 
+    # Learn vocabulary weights and encode documents as a sparse matrix.
     X = vectorizer.fit_transform(docs)
     return X, vectorizer
