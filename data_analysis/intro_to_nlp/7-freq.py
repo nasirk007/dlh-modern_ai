@@ -32,4 +32,5 @@ def plot_top_n_frequencies(corpus_tokens, n=20):
     plt.ylabel("Frequency")
     plt.tight_layout()
 
+    # Return all counts so callers can inspect more than the plotted words.
     return freq
