@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Learn Word2Vec word vectors and turn each message into one vector."""
+"""Learn Word2Vec word vectors & turn each message into a vector."""
 import numpy as np
 import gensim.models
 
 
 def word2vec_embeddings(corpus_tokens, vector_size=100, window=5,
                         min_count=2, sg=0, epochs=10, workers=4):
-    """Train Word2Vec on the corpus and represent each message as the
+    """Train Word2Vec on corpus and represent each message as a
     mean of its word vectors. Returns (X, model)."""
     # train the model
     model = gensim.models.Word2Vec(sentences=corpus_tokens,
