@@ -7,6 +7,7 @@ def remove_stopwords(tokens, language="english", extra_words=None,
                      keep_words=None):
     """Drop stopwords from a token list. Words in extra_words are dropped
     too, words in keep_words are always kept. Returns the new list."""
+    # Avoid loading stopwords when the input is not a token list.
     if not isinstance(tokens, list):
         return []
 
