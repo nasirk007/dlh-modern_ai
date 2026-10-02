@@ -19,6 +19,8 @@ def normalize_emoticons(tokens, emoticon_action="replace"):
     emoticon_action is not "replace". Returns a new list."""
     if not isinstance(tokens, list):
         return []
+
+    # Replace known emoticons and preserve tokens that are not emoticons.
     result = []
     for token in tokens:
         mapped = EMOTICON_MAP.get(token.lower())
@@ -37,6 +39,7 @@ def tokenize_text(text, method="tweet"):
     if not isinstance(text, str):
         return []
 
+    # Select the requested tokenizer for the cleaned message.
     if method == "tweet":
         # reduce_len keeps at most 3 repeated characters
         tokenizer = nltk.tokenize.TweetTokenizer(reduce_len=True)
