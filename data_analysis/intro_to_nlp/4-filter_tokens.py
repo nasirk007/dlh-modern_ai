@@ -9,6 +9,7 @@ _PLACEHOLDER_RE = re.compile(r'^<[A-Za-z]+>$')
 def filter_tokens(tokens, min_len=2, strip_hashtag=False):
     """Keep only useful tokens: placeholders always stay, short tokens
     and tokens without letters are dropped. Returns a new list."""
+    # An empty list has no tokens to filter.
     if not tokens:
         return []
 
