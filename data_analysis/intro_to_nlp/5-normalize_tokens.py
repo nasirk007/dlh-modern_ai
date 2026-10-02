@@ -19,6 +19,7 @@ def get_pos(tag):
 def normalize_tokens(tokens, method="lemmatize"):
     """Lemmatize or stem each token, leaving placeholders like <NUM>
     untouched. Returns the new list of tokens."""
+    # Reject unsupported normalization methods before processing tokens.
     if method != "lemmatize" and method != "stem":
         raise ValueError("method must be 'lemmatize' or 'stem'")
 
@@ -34,7 +35,7 @@ def normalize_tokens(tokens, method="lemmatize"):
                 result.append(stemmer.stem(token))
         return result
 
-    # lemmatize: first find the POS of each token
+    # Lemmatize with each token's part of speech for context-sensitive forms.
     tagged = nltk.pos_tag(tokens)
     lemmatizer = nltk.stem.WordNetLemmatizer()
     for token, tag in tagged:
