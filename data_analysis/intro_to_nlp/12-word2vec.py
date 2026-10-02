@@ -17,6 +17,7 @@ def word2vec_embeddings(corpus_tokens, vector_size=100, window=5,
                                    epochs=epochs,
                                    workers=workers)
 
+    # Pool only in-vocabulary word vectors for each message.
     rows = []
     for tokens in corpus_tokens:
         # vectors of the words the model knows
