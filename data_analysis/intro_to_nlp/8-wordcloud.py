@@ -23,6 +23,7 @@ def generate_wordcloud(corpus_tokens, max_words=200, label=None):
     plt.figure(figsize=(10, 5))
     plt.imshow(WC, interpolation="bilinear")
     plt.axis("off")
+    # Include a label when comparing clouds from different message groups.
     if label:
         plt.title(f"WordCloud — {label}")
     else:
